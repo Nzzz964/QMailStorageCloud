@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@fastify/helmet': ^8.0.0
   '@types/node': ^17.0.29
   '@types/node-schedule': ^1.3.2
   axios: ^0.27.2
@@ -8,18 +9,17 @@ specifiers:
   cheerio: ^1.0.0-rc.10
   dotenv: ^16.0.0
   fastify: ^3.28.0
-  fastify-helmet: ^7.1.0
   iconv-lite: ^0.6.3
   knex: ^2.0.0
   typescript: ^4.6.3
 
 dependencies:
+  '@fastify/helmet': 8.0.0
   axios: 0.27.2
   better-sqlite3: 7.5.1
   cheerio: 1.0.0-rc.10
   dotenv: 16.0.0
   fastify: 3.28.0
-  fastify-helmet: 7.1.0
   iconv-lite: 0.6.3
   knex: 2.0.0_better-sqlite3@7.5.1
 
@@ -34,6 +34,13 @@ packages:
     resolution: {integrity: sha512-gvCOUNpXsWrIQ3A4aXCLIdblL0tDq42BG/2Xw7oxbil9h11uow10ztS2GuFazNBfjbrsZ5nl+nPl5jDSjj5TSg==}
     dependencies:
       ajv: 6.12.6
+    dev: false
+
+  /@fastify/helmet/8.0.0:
+    resolution: {integrity: sha512-ZH44iLUmXNfYDyfHDbTTbewKrrGG/SBAkgju5RiIYVbOfyKfXGzxq1Om9RyXTSn5fKvNT//Ew71dPdiKg0fjoQ==}
+    dependencies:
+      fastify-plugin: 3.0.1
+      helmet: 5.0.2
     dev: false
 
   /@types/node-schedule/1.3.2:
@@ -363,20 +370,6 @@ packages:
 
   /fastify-error/0.3.1:
     resolution: {integrity: sha512-oCfpcsDndgnDVgiI7bwFKAun2dO+4h84vBlkWsWnz/OUK9Reff5UFoFl241xTiLeHWX/vU9zkDVXqYUxjOwHcQ==}
-    dev: false
-
-  /fastify-helmet/7.0.1:
-    resolution: {integrity: sha512-/PSKDJZkBhJ0ioY1swOUfYNYQRfRnXD5X2eKD9TSVBuPKbH+OYg/IYBxad33uaOGlWn28MNOd+kw5sQKSWY1yA==}
-    dependencies:
-      fastify-plugin: 3.0.1
-      helmet: 5.0.2
-    dev: false
-
-  /fastify-helmet/7.1.0:
-    resolution: {integrity: sha512-rgSYdx42+Rq4EETbJXMCWtsvYtZdstEuaDBiwFAiNJhjjqgf2AllrdDYEUb5nUA/FXSrfP4MKnpa3ZgyLd/nRQ==}
-    dependencies:
-      fastify-helmet-deprecated: /fastify-helmet/7.0.1
-      process-warning: 1.0.0
     dev: false
 
   /fastify-plugin/3.0.1:

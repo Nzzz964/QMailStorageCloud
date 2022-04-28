@@ -9,12 +9,12 @@
   "author": "Nzzz964",
   "license": "GPL",
   "dependencies": {
+    "@fastify/helmet": "^8.0.0",
     "axios": "^0.27.2",
     "better-sqlite3": "^7.5.1",
     "cheerio": "^1.0.0-rc.10",
     "dotenv": "^16.0.0",
     "fastify": "^3.28.0",
-    "fastify-helmet": "^7.1.0",
     "iconv-lite": "^0.6.3",
     "knex": "^2.0.0"
   },

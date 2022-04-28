@@ -1,6 +1,9 @@
 import fastify from "fastify";
+import helmet from "@fastify/helmet";
 
 const server = fastify();
+
+server.register(helmet);
 
 server.get("/", (req, reply) => {
     reply.status(200).send("Hello World");
