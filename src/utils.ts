@@ -9,7 +9,7 @@ export const cookie = {
         return str;
     },
     toObject: function (text: string): Cookie {
-        let cookie: Cookie;
+        let cookie: Cookie = {};
         const cookieArray = text.split(";");
         for (const value of cookieArray) {
             const [k, v] = value.split("=");

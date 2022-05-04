@@ -1,5 +1,8 @@
+import { logger } from "./logger";
 import { Cookie } from "./types";
+import { cookie } from "./utils";
 
+const log = logger("Context");
 export class Context {
     private _current: Cookie;
     private _sid: string;
@@ -26,6 +29,7 @@ export class Context {
      * 设置 sid
      */
     set sid(sid: string) {
+        log.info(`设置当前 sid 为: ${sid}`);
         this._sid = sid;
     }
 
@@ -39,7 +43,7 @@ export class Context {
     /**
      * 设置 Cookie
      */
-    set current(cookie: Cookie) {
-        this._current = cookie;
+    set current(c: Cookie) {
+        this._current = c;
     }
 }
