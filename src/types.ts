@@ -4,6 +4,7 @@ export interface Cookie {
 
 export interface ServerConfig {
     port: number;
+    address: string;
 }
 
 export interface MailConfig {
