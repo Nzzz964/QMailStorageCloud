@@ -17,7 +17,7 @@ server.register(pov, {
     engine: { ejs }
 });
 router(server);
-server.listen(config.server.port, (err, address) => {
+server.listen(config.server.port, config.server.address, (err, address) => {
     if (err) {
         console.error(err);
         process.exit(1);
