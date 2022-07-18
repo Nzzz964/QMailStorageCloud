@@ -14,19 +14,26 @@ export const keepAlive = async () => {
         let response = await MailApi.timeout();
         //请求 psaread
         response = await MailApi.psaread();
-        const status = response.status;
+        let status = response.status;
         if (status !== 302) {
             throw new KeepAliveError(`keepAlive psaread 请求返回状态不正确: ${status}`);
         }
+        let location = response.headers.location;
 
-        const location = response.headers.location;
-        const check = /https:\/\/mail.qq.com\/cgi-bin\/frame_html\?sid=/;
-        if (!check.test(location)) {
+        if (location.startsWith("https://wx.mail.qq.com/login/login")) {
+            response = await await MailApi.psaread({ url: location });
+            status = response.status;
+            if (status !== 302) {
+                throw new KeepAliveError(`keepAlive psaread 请求返回状态不正确: ${status}`);
+            }
+            location = response.headers.location;
+        }
+        if (!location.startsWith("https://mail.qq.com/cgi-bin/frame_html?sid=")) {
             throw new KeepAliveError(`keepAlive psaread 请求重定向不正确: ${location}`);
         }
     } catch (err) {
         if (err instanceof AxiosError) {
-            log.error(err.response.data.toString());
+            log.error(err);
         }
         throw err;
     }

@@ -19,7 +19,11 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-    const particular = ["https://mail.qq.com/cgi-bin/loginpage", "https://mail.qq.com/cgi-bin/login"];
+    const particular = [
+        "https://mail.qq.com/cgi-bin/loginpage",
+        "https://mail.qq.com/cgi-bin/login",
+        "https://wx.mail.qq.com/login/login"
+    ];
 
     const url = config.url;
     log.info(`正在请求URL: ${url}`);
@@ -27,8 +31,7 @@ instance.interceptors.request.use((config) => {
     if (config.headers) {
         config.headers["Cookie"] = cookie.toString(context.current);
     }
-
-    if (particular.includes(url) && config.headers) {
+    if (particular.some(v => url.startsWith(v)) && config.headers) {
         //使用原始 Cookie
         config.headers["Cookie"] = cookie.toString(context.original);
     }

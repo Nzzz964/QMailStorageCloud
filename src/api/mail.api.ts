@@ -27,8 +27,8 @@ export const timeout = async () => {
     return response;
 };
 
-export const psaread = async () => {
-    const response = await axios.get(Api.LOGIN, {
+export const psaread = async ({ url = Api.LOGIN }: { url?: string } = {}) => {
+    const response = await axios.get(url, {
         maxRedirects: 0,
         params: {
             fun: "psaread",
@@ -40,7 +40,7 @@ export const psaread = async () => {
     const headers = response.headers;
     const location = headers?.location;
     if (location) {
-        const re = /^https:\/\/mail\.qq\.com\/cgi-bin\/frame_html\?sid=(.*)&.*$/;
+        const re = /^https:\/\/mail\.qq\.com\/cgi-bin\/frame_html\?sid=(.*?)&.*$/;
         const matches = location.match(re);
         if (matches) {
             context.sid = matches[1];
