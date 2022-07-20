@@ -21,7 +21,7 @@ export const keepAlive = async () => {
         let location = response.headers.location;
 
         if (location.startsWith("https://wx.mail.qq.com/login/login")) {
-            response = await await MailApi.psaread({ url: location });
+            response = await MailApi.psaread({ url: location });
             status = response.status;
             if (status !== 302) {
                 throw new KeepAliveError(`keepAlive psaread 请求返回状态不正确: ${status}`);
